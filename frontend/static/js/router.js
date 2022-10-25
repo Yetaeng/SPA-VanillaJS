@@ -1,6 +1,7 @@
 import Main from '../views/main.js';
 import About from '../views/about.js';
 import Dashboard from '../views/dashboard.js';
+import NotFound from '../views/notFound.js';
 
 const router = async () => {
   const routes = [
@@ -19,12 +20,12 @@ const router = async () => {
   
   let match = potentialMatches.find(match => match.isMathch);
   if (!match) {
-    return document.querySelector('#app').innerHTML = '<h1>Not found</h1>';
-  }
-
-  // 렌더링
-  const view = new match.route.view();
-  view.render(document.querySelector('#app'));
+    const view = new NotFound();
+    view.render(document.querySelector('body'));
+  } else {
+    const view = new match.route.view();
+    view.render(document.querySelector('#app'));
+  };
 };
 
 // 페이지 이동
