@@ -1,8 +1,12 @@
+import Main from '../views/main.js';
+import About from '../views/about.js';
+import Dashboard from '../views/dashboard.js';
+
 const router = async () => {
   const routes = [
-    { path: '/', view: () => {console.log('main');}},
-    { path: '/about', view: () => {console.log('about');}},
-    { path: '/dashboard', view: () => {console.log('dashboard');}},
+    { path: '/', view: Main},
+    { path: '/about', view: About},
+    { path: '/dashboard', view: Dashboard},
   ];
   
   // routes 배열을 돌며 현재 브라우저 url의 /뒤와 일치하는 route를 찾아 새로운 배열 potentialMatches을 반환함
@@ -18,12 +22,14 @@ const router = async () => {
     return document.querySelector('#app').innerHTML = '<h1>Not found</h1>';
   }
 
-  console.log(match.route.view());
+  // 렌더링
+  const view = new match.route.view();
+  view.render(document.querySelector('#app'));
 };
 
 // 페이지 이동
 const navigator = (url) => {
-  window.history.pushState({}, null, url); // url 주소 바꿔줌. 렌더링은 x
+  window.history.pushState(null, null, url); // url 주소 바꿔줌. 렌더링은 x
 
   router();
 }
@@ -32,7 +38,7 @@ const navigator = (url) => {
 window.addEventListener("popstate", router);
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector('.nav').addEventListener("click", (e) => {
+  document.querySelector('#navigation').addEventListener("click", (e) => {
     e.preventDefault();
     navigator(e.target.href);
   });
