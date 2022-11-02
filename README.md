@@ -32,11 +32,11 @@ express.static 메서드는 node 프로세스가 실행되는 디렉터리에 �
 만약 디렉토리 뎁스가 많다면 path 모듈을 사용해 경로를 지정해줄 수 있는데, path.resolve는 인자들을 하나로 합쳐 경로를 만들어준다.
 <br /><br />
 
-### ✅ `DOMContentLoaded` vs `load`
-DOMContentLoaded는 초기 HTML 문서를 완전히 불러오고 분석이 끝났을 때 발생한다. 그리고 스타일 시트, 이미지, 하위 프레임의 로딩은 기다리지 않는다.
+### ✅ DOMContentLoaded vs load
+`DOMContentLoaded`는 초기 HTML 문서를 완전히 불러오고 분석이 끝났을 때 발생한다. 그리고 스타일 시트, 이미지, 하위 프레임의 로딩은 기다리지 않는다.
 그래서 조금 더 빠르게 사용자가 볼 수 있다는 장점이 있으며, defer를 선언한 js와 비슷하게 발동한다.
 
-load는 DOM 요소를 만들고, 페이지에 필요한 모든 리소스(모든 외부자원)를 다 다운받고나면 이벤트가 호출된다.
+`load`는 DOM 요소를 만들고, 페이지에 필요한 모든 리소스(모든 외부자원)를 다 다운받고나면 이벤트가 호출된다.
 <br /><br />
 
 ### ✅ popstate event
